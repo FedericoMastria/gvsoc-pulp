@@ -27,12 +27,12 @@ class L2SharedAttr(Tree):
         self.nb_banks = Value(self, 'nb_banks', 4)
         self.nb_regions = Value(self, 'nb_regions', 12)
         self.interleaving_bits = Value(self, 'interleaving_bits', 2)
-        self.range = Area(self, 'range', 0x1C010000, 0x00180000, description='L2 shared banks')
+        self.range = Area(self, 'range', 0x1C010000, 0x00ff0000, description='L2 shared banks')
 
 class L2Attr(Tree):
     def __init__(self, parent, name):
         super().__init__(parent, name)
-        self.range = Area(self, 'range', 0x1C000000, 0x00190000, description='L2 whole address range')
+        self.range = Area(self, 'range', 0x1C000000, 0x01000000, description='L2 whole address range')
         self.priv0 = Area(self, 'priv0', 0x1C000000, 0x00008000, description='L2 private bank 0')
         self.priv1 = Area(self, 'priv1', 0x1C008000, 0x00008000, description='L2 private bank 1')
         self.shared = L2SharedAttr(self, 'shared')

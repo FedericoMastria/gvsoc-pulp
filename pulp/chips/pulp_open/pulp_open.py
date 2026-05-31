@@ -21,6 +21,7 @@ from vp.clock_domain import Clock_domain
 from utils.clock_generator import Clock_generator
 from pulp.padframe.padframe_v1 import Padframe
 import interco.router_proxy as router_proxy
+from memory.memory import Memory
 import memory.dramsys
 import memory.pim_component
 from gvrun.attribute import Tree, Area, Value
@@ -85,7 +86,7 @@ class Pulp_open(st.Component):
 
         # DRAMsys
         if use_ddr:
-            ddr = memory.dramsys.Dramsys(self, 'ddr', pim_support=pim_support)
+            ddr = Memory(self, 'ddr', size=0x40000000)
             if pim_support:
                 pim_component = memory.pim_component.PimComponent(self, 'pim_component')
 
